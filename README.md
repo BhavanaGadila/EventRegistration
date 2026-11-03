@@ -35,3 +35,38 @@ EventRegistration/
 ## Author
 
 **Bhavana Gadila**
+
+
+
+
+
+
+
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git(
+                    url: 'https://github.com/niharikamandadi/jenkins.git',
+                    branch: 'main'
+                )
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building Registration Form Project'
+
+                sh 'ls -la'
+
+                sh 'test -f index.html'
+                sh 'test -f display.html'
+
+                echo 'Build completed successfully'
+            }
+        }
+    }
+}
